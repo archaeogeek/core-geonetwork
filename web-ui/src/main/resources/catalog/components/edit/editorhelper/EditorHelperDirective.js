@@ -58,8 +58,8 @@
         link: function(scope, element, attrs) {
           // Retrieve the target field by name (general case)
           // or by id (template mode field).
-          var field = document.gnEditor[scope.ref] || $('#' + scope.ref).get(O),
-              if (field == undefined && ($('#' + scope.ref).length > 0)) {
+          var field = document.gnEditor[scope.ref];
+          if (field == undefined && ($('#' + scope.ref).length > 0)) {
             field = $('#' + scope.ref).get(O);
           }
 
@@ -70,9 +70,9 @@
             field = document.gnEditor[scope.relatedAttr.replace(":", "COLON")];
           }
 
-
-	  var relatedAttributeField = document.gnEditor[scope.relatedAttr],
+          var relatedAttributeField = document.gnEditor[scope.relatedAttr],
               relatedElementField = document.gnEditor[scope.relatedElement],
+              initialValue = field.value;
               initialValue = field.value;
 
           // Function to properly set the target field value
