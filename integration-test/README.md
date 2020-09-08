@@ -6,43 +6,43 @@ Based on [selenium-cucumber](https://github.com/selenium-cucumber/selenium-cucum
 
 ## Running test
 
-Go to your project directory from terminal and hit following command
+To run these integration tests,  ensure GeoNetwork is running and accessible. Change to the `integration-test` directory in your project. Download the driver that you want to use (see below) and copy it to the directory. Run the following command:
 
 * With Chrome 
 
-`mvn test -Dbrowser=chrome -Dwebdriver.chrome.driver=chromedriver -DendPointToTest=http://localhost:8080/geonetwork`
+`mvn test -Dbrowser=chrome`
 
 * With phantomJS 
 
-`mvn test -Dbrowser=phantomjs -Dphantomjs.binary.path=$DRIVERS_BIN/phantomjs -DendPointToTest=http://localhost:8080/geonetwork`
+`mvn test -Dbrowser=phantomjs`
+
+* With Firefox
+
+`mvn test -Dbrowser=firefox`
 
 
-* The url to test could by defined in **src/test/resources/system.properties** by changing the property **endPointToTest.url** or provided to the mvn command with the parameter `-DendPointToTest=YOUR_URL`
+* The above commands assume that GeoNetwork is running and accessible on http://localhost:8080/geonetwork. You can alternatively define a different location in **src/test/resources/system.properties** by changing the property **endPointToTest.url**
 
 * By default the mvn command run all the test in the folder **src/test/resources/features**. To specify a different folder use the parameter `-Dcucumber.options="your path"`
 
 * To specify a path for the reports use the option `-Dcucumber.options="--plugin html:./report` in case you need to specify your path, the path must go after `-Dcucumber.options="--plugin html:./report your path`
 
 
-
 ## PhantomJS driver
 
-The purpose of this software it's to run automated tests after builds, so it's used the phantomJS driver. 
+To run the tests in headless mode, use this approach. 
 
-The right binary could be downloaded from [here](http://phantomjs.org).
+Download the binary from [here](http://phantomjs.org).
 
 ## Gecko driver
 
-If you want to see the running tests on firefox you can also use a geckodriver by running the mvn command with the parameters:
-
-`mvn test -Dbrowser=firefox -Dwebdriver.gecko.driver=$DRIVERS_BIN/geckodriver`
+If you want to see the running tests in firefox use geckodriver.
 
 Download the geckodriver from [here](https://github.com/mozilla/geckodriver/releases)
 
 ## Chrome driver
 
 Download Chrome driver from [here](http://chromedriver.chromium.org/downloads).
-
 
 ## Writing a test
 
